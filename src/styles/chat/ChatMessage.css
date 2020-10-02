@@ -1,0 +1,50 @@
+.chatMessage{
+    width: fit-content;
+    padding: 10px;
+    border-radius: 20px;
+    color: #fffcf9;
+    background: #80808082;
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.chat__top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.chat__top > h5 {
+    margin-top: 0;
+}
+
+.chat__bottom > p{
+    margin-left: 10px;
+}
+
+.chat_avatar_wrap > .MuiAvatar-root {
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .chatMessage{
+        padding: 10px;
+    }
+
+    .chat__top > h5 {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .chat__top > p {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    
+    .chat__bottom > p{
+        margin-left: 10px;
+        margin-bottom: 0;
+    }
+}

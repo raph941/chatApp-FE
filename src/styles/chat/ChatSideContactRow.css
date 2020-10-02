@@ -1,0 +1,33 @@
+.Contact__row{
+    display: flex;
+    align-items: center;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.contact__row-text {
+    padding-left: 10px;
+    flex: 1;
+}
+
+.contact__row-text > h4 {
+    margin-bottom: 0px;
+    font-weight: 400;
+}
+
+.contact__row-text > p {
+    color: grey;
+}
+
+.contact__row-indicators > p{
+    margin-bottom: 3px;
+}
+
+.contact__row-indicators:nth-child(1){
+    margin-top: 0px;
+    
+}
+
+.badge{
+    background: #c8d339;
+}

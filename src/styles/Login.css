@@ -1,0 +1,102 @@
+.login{
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login__box{
+    width: max-content;
+    height: fit-content;
+    padding: 50px;
+}
+
+.input__wrap > label {
+    color: black;
+    font-weight: 400;
+}
+
+.input__wrap > input {
+    padding: 7px;
+    border-radius: 5px;
+    border: 1px solid #b78252;
+    color: #b78252;
+}
+
+.input__wrap{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 10px;
+}
+
+.submit__btn{
+    border: 0px;
+    background: #c8d339b8;
+    padding: 5px 25px 5px 23px;
+    width: -moz-fit-content;
+    width: fit-content;
+    font-weight: 500;
+}
+
+.emoji__wrap{
+    display: flex;
+    font-size: 20px;
+    /* flex-direction: column; */
+}
+
+.emoji1{
+    animation: opacityAnime 1s linear;
+}
+
+.emoji2{
+    animation: opacityAnime 2s linear;
+}
+.emoji3{
+    animation: opacityAnime 3s linear;
+}
+
+.emoji4{
+    animation: opacityAnime 4s linear;
+}
+
+@keyframes opacityAnime {
+    0% { opacity: 0; }
+    50% { opacity: 0; }
+    75% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@media (min-width: 768px) {
+    .input__wrap > label {
+        font-weight: 400;
+        font-size: 20px;
+    }
+    
+    .input__wrap > input {
+        padding: 8px;
+        border-radius: 5px;
+        border: 1px solid #b78252;
+        color: #b78252;
+        width: 350px;
+        font-size: 20px;
+    }
+
+    .input__wrap{
+        padding-bottom: 15px;
+    }
+
+    .submit__btn {
+        padding: 10px 35px 10px 35px;
+    }
+
+    .emoji__wrap{
+        font-size: 25px;
+        /* flex-direction: column; */
+    }
+
+    form > i {
+        font-size: 18px;
+    }
+
+}

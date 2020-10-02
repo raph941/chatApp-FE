@@ -1,0 +1,11 @@
+.chatArea{
+    height: 85vh;
+    display: flex;
+    padding: 20px;
+}
+
+@media (max-width: 768px) {
+    .chatArea{
+        padding: 0px;
+    }
+}

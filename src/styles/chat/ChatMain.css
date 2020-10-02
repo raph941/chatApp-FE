@@ -1,0 +1,62 @@
+.chatMain{
+    flex: 0.7;
+    background-image: url('../../images/talk1-1.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.chatmain__chat{
+    height: 90%;
+    overflow-y: scroll;
+    padding: 20px;
+    margin-bottom: 10px;
+}
+
+/* Hide Scrollbar on Chrome, Safari and Opera */
+.chatmain__chat::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.chatmain__chat {
+    scrollbar-width: none; /* Firefox */
+}
+
+.input_wrapper{
+    width: 100%;
+    margin: 0px 20px;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    border: 1px solid black;
+}
+
+.chat__input{
+    flex: 1;
+    border: 0px;
+}
+
+.chat__input:focus{
+    outline: none;
+}
+
+.chat_submit_btn{
+    border: 0px;
+    background: transparent;
+}
+
+@media (max-width: 768px) {
+    .chatMain{
+        flex: 1;
+    }
+    .input_wrapper {
+        width: initial;
+    }
+
+    .chatmain__chat{
+        padding-top: 0px;
+    }
+    .chatmain__input{
+        margin-bottom: 50px;
+    }
+}

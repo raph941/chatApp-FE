@@ -1,0 +1,10 @@
+.footer{
+    bottom: 5px;
+    justify-content: center;
+    width: 100%;
+    z-index: 0;
+}
+
+.footer > h5 {
+    text-align: center;
+}
