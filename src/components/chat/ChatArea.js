@@ -1,66 +1,45 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../styles/chat/ChatArea.css';
 import ChatMain from './ChatMain';
 import ChatSidebar from './ChatSidebar';
-import { connect } from 'react-redux';
-import { showConversation, showConversationList, conversationClicked } from '../../Redux/actions/chatAreaUiActions';
 
 
-const ChatArea = ({ showConversation, showConversationList, conversationClicked }) => {
-    const [width, setWidth] = useState(window.innerWidth)
-    // const [ openSide, setOpenSide ] = useState(true)
-    // const [ sideClicked, setSideClicked ] = useState(true)
+const ChatArea = () => {
+    const [ width, setWidth ] = useState(window.innerWidth)
+    const [ openMain, setOpenMain ] = useState(true)
+    const [ openSide, setOpenSide ] = useState(true)
+    const [ sideClicked, setSideClicked ] = useState(true)
 
     window.addEventListener("resize", function(){
         setWidth(window.innerWidth)
-        console.log(showConversation(), showConversationList(), conversationClicked())
-        if (window.innerWidth > 768){
-            showConversation(true)
-            showConversationList(true)
-        }else {
-            if(conversationClicked){
-                showConversation(true)
-                showConversationList(false)
-            }
-            else{
-                showConversation(false)
-                showConversationList(true)
-            }
-        }
     });
 
-    // const handleContactClick = () => {
-    //     setSideClicked(!sideClicked)
-    // }
+    const handleContactClick = () => {
+        setSideClicked(!sideClicked)
+    }
 
     useEffect(() => {
         if (width > 768){
-            showConversation(true)
-            showConversationList(true)
+            setOpenMain(true)
+            setOpenSide(true)
         }else {
-            if(conversationClicked){
-                showConversation(true)
-                showConversationList(false)
+            if(sideClicked){
+                setOpenSide(false)
+                setOpenMain(true)
             }
             else{
-                showConversation(false)
-                showConversationList(true)
+                setOpenMain(false)
+                setOpenSide(true)
             }
         }
-    }, [])
+    }, [width, sideClicked])
 
     return ( 
         <div className="chatArea">
-            { showConversation && <ChatSidebar className="chatArea__main" />}
-            { showConversationList && <ChatMain className="chatArea__sidebar"/> }
+            { openSide && <ChatSidebar className="chatArea__main" />}
+            { openMain && <ChatMain className="chatArea__sidebar"/> }
         </div>
      );
 }
-
-// const mapStateToProps = state => {
-//     return {
-//         screenWidth: state.screenWidth.width
-//     }
-// }
  
-export default connect(null, { showConversation, showConversationList, conversationClicked })( ChatArea )
+export default ChatArea

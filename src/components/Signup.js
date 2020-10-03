@@ -1,27 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { connect } from 'react-redux'
 import '../styles/Signup.css';
 import { Link } from 'react-router-dom'
+import { signupUserAction } from '../Redux/actions/authActions'
 
 
-const Signup = () => {
+const Signup = ({ signupUserAction }) => {
+    const [ formState, setFormState ] = useState({username: '',password1: '',password2: ''})
+    const handleChange = (e) => {
+        setFormState({
+            ...formState,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    const handleSubmit = (e) => {
+       e.preventDefault()
+       console.log(formState)
+    }
+
     return ( 
         <div className="signup">
             <div className="signup__box">
-                <form>
+                <form onSubmit={handleSubmit}>
                     <div className="input__wrap">
                         <label>username:</label>
-                        <input type="text" placeholder="@cyber-dev"/>
+                        <input name="username" onChange={handleChange} type="text" placeholder="@cyber-dev"/>
                     </div>
                     <div className="input__wrap">
                         <label>Password:</label>
-                        <input type="password" />
+                        <input name="password1" onChange={handleChange} type="password" />
                     </div>
                     <div className="input__wrap">
                         <label>Confirm Password:</label>
-                        <input type="password" />
+                        <input name="password2" onChange={handleChange} type="password" />
                     </div>
                     <div className="input__wrap">
-                        <button className="submit__btn">signup</button>
+                        <button className="submit__btn" >signup</button>
                     </div>
 
                     <i> 
@@ -40,5 +55,14 @@ const Signup = () => {
         </div>
      );
 }
- 
-export default Signup;
+
+// function mapStateToProps(store) {
+//     return {
+//         characters: store.characters.characters,
+//         character: store.characters.currentCharracter,
+//         showModal: store.characters.showModal,
+//         fetching: store.characters.fetching,
+//     }
+// }
+
+export default connect(null, { signupUserAction })(Signup)
