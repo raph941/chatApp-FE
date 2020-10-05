@@ -1,12 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/Navbar.css';
 import Logo from '../images/avocado.png';
 import { NavLink, Link } from 'react-router-dom'
 import Avatar from '@material-ui/core/Avatar';
+import Cookies from 'js-cookie'
+import { connect } from 'react-redux'
+import { closeAlert } from '../Redux/actions/genericActions'
+import { fetchUserAction } from '../Redux/actions/authActions'
 
 
-const Navbar = () => {
-    const [auth, setAuth] = useState(true)
+const Navbar = ({ show_alert, alert_message, alert_level, closeAlert, user, authenticated, fetchUserAction }) => {
+
+    useEffect(() => {
+        if(authenticated){
+            fetchUserAction()
+        }
+    }, [])
 
     return ( 
         <div className="navbar">
@@ -19,10 +28,11 @@ const Navbar = () => {
             </div>
 
             <div className="navbar__right d-none">
-                { auth 
+                { authenticated 
                 ? 
                     <>
-                    <Avatar src="https://lh3.googleusercontent.com/ogw/ADGmqu_E0QeWyWCVvgqWJYxehJcs7uyerWLjHjy_uppw=s32-c-mo" />   
+                    <p className="nav-item-logout">Logout</p>
+                    <Avatar src={ user?.image_url } />   
                     {/* <Link to="/chat" className="nav-item">Chat</Link> */}
                     </>
                 :
@@ -33,7 +43,17 @@ const Navbar = () => {
                 }
             </div>
         </div>
-     );
+    );
+}
+
+function mapStateToProps(store) {
+    return {
+        show_alert: store.generic.show_alert,
+        alert_message: store.generic.alert_message,
+        alert_level: store.generic.alert_level,
+        user: store.auth.user,
+        authenticated: store.auth.is_auth, 
+    }
 }
  
-export default Navbar;
+export default connect(mapStateToProps, { closeAlert, fetchUserAction })(Navbar)

@@ -1,28 +1,67 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux'
 import '../styles/Login.css';
-import { Link } from 'react-router-dom'
+import { Link, useLocation, Redirect } from 'react-router-dom'
+import { useFormik } from 'formik';
+import { loginFormvalidate } from '../utils/formValidation'
+import { loginUserAction } from '../Redux/actions/authActions'
+import { closeAlert } from '../Redux/actions/genericActions'
+import authReducer from '../Redux/reducers/authReducer';
+import Cookies from 'js-cookie'
 
 
-const Login = () => {
+const Login = ({ loginUserAction, show_alert, alert_message, alert_level, closeAlert, user, authenticated }) => {
+    const formik = useFormik({
+        initialValues: {
+          username: '',
+          password: '',
+        },
+        validate: loginFormvalidate,
+
+        onSubmit: values => {
+          loginUserAction(values)
+        },
+    });
+
+    let location = useLocation
+    useEffect(()=> {
+        closeAlert()
+    }, [location])
+
     return ( 
         <div className="login">
             <div className="login__box">
-                <form>
+                <form onSubmit={formik.handleSubmit}>
                     <div className="input__wrap">
                         <label>Username:</label>
-                        <input type="text" placeholder="@cyber-dev"/>
+                        <input 
+                            id="username"
+                            name="username" 
+                            onChange={formik.handleChange} 
+                            value={formik.values.username}
+                            type="text" 
+                        />
+                        { formik.errors.username ? <div className="error">{ formik.errors.username }</div> : null }
                     </div>
                     <div className="input__wrap">
-                        <label>Password:</label>
-                        <input type="password" />
+                        <label htmlFor="password" >Password</label>
+                        <input 
+                            id="password"
+                            name="password" 
+                            onChange={formik.handleChange}
+                            value={formik.values.password} 
+                            type="password" 
+                        />
+                        { formik.errors.password ? <div className="error">{ formik.errors.password }</div> : null }
                     </div>
                     <div className="input__wrap">
-                        <button className="submit__btn">login</button>
+                        <button type="submit" className="submit__btn">login</button>
                     </div>
 
                     <i> 
                         Dont have an account yet? 
-                        <Link to="/signup"> Signup</Link>    
+                        <Link to="/signup"> Signup</Link>   
+                        { authenticated && <p>Hello i am authenticated</p> } 
                     </i>
                 </form>
             </div>
@@ -36,5 +75,15 @@ const Login = () => {
         </div>
      );
 }
+
+function mapStateToProps(store) {
+    return {
+        show_alert: store.generic.show_alert,
+        alert_message: store.generic.alert_message,
+        alert_level: store.generic.alert_level,
+        user: store.auth.user,
+        authenticated: store.auth.is_auth, 
+    }
+}
  
-export default Login;
+export default connect(mapStateToProps, { loginUserAction, closeAlert })(Login)

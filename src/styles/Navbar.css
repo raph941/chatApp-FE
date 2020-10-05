@@ -46,11 +46,30 @@
     align-self: center ;
 }
 
+.nav-item-logout{
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-left: 10px;
+    font-size: 1.35rem;
+    color: black;
+    font-weight: 550;
+    cursor: pointer;
+}
+
+.nav-item-logout:hover{
+    color: #b78252;
+}
+
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
     .navbar__right > a {
         font-size: 1.7rem;
         font-weight: 500;
+    }
+
+    .nav-item-logout{
+        font-size: 1.7rem;
+
     }
 }
 
@@ -71,3 +90,4 @@
         transform: rotate(0deg);
     }
 }
+

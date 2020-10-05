@@ -6,6 +6,7 @@ import ActiveChatHeader from './ActiveChatHeader'
 
 const ChatMain = () => {
     const [ activeChat, setActiveChat ] = useState(true)
+    const [ loading, setLoading ] = useState(true)
 
     return ( 
         <div className="chatMain">
@@ -16,20 +17,26 @@ const ChatMain = () => {
             }
             
             <div className="chatmain__chat">
-                <ChatMessage />
-                <ChatMessage />
-                <ChatMessage />
-                <ChatMessage />
-                <ChatMessage />
-                <ChatMessage />
-                <ChatMessage />
-                <ChatMessage />
-                <ChatMessage />
-                <ChatMessage />
-                <ChatMessage />
-                <ChatMessage />
-
+                { activeChat 
+                    ?  <>
+                        <ChatMessage />
+                        <ChatMessage />
+                        <ChatMessage />
+                        <ChatMessage />
+                        <ChatMessage />
+                        <ChatMessage />
+                        <ChatMessage />
+                        <ChatMessage />
+                        <ChatMessage />
+                        <ChatMessage />
+                        <ChatMessage />
+                        <ChatMessage />
+                       </>
+                    :
+                        <p className="no_active_chat_msg">Click on a conversation, to start a chat now</p>
+                }
             </div>
+
             <div  className="chatmain__input">
                 <div className="input_wrapper">
                     <input className="chat__input" />

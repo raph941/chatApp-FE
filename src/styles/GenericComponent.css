@@ -1,0 +1,35 @@
+/* Alerts */
+.alert__success{
+    background: #00800038;
+    border-left: 5px solid;
+    padding: 15px;
+    border-radius: 5px;
+    border-left-color: green;
+    color: green;
+    position: absolute;
+    top: 50px;
+  }
+  
+  .alert__danger{
+    background: #ff00002b;
+    border-left: 5px solid;
+    /* border-right-color: red; */
+    padding: 15px;
+    border-radius: 5px;
+    border-left-color: red;
+    color: red;
+    position: absolute;
+    top: 50px;
+  }
+  
+  .alert__dismiss{
+    background: transparent;
+    border: 0;
+    font-weight: bolder;
+  }
+
+  .alert__wrapper{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }

@@ -1,42 +1,72 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux'
 import '../styles/Signup.css';
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { signupUserAction } from '../Redux/actions/authActions'
+import { alertAction, showAlertAction, closeAlert } from '../Redux/actions/genericActions'
+import { useFormik } from 'formik';
+import { signupFormvalidate } from '../utils/formValidation'
 
 
-const Signup = ({ signupUserAction }) => {
-    const [ formState, setFormState ] = useState({username: '',password1: '',password2: ''})
-    const handleChange = (e) => {
-        setFormState({
-            ...formState,
-            [e.target.name]: e.target.value
-        })
-    }
+const Signup = ({ signupUserAction, show_alert, alert_message, alert_level, showAlertAction, user, closeAlert }) => {
+    const formik = useFormik({
+        initialValues: {
+          username: '',
+          password1: '',
+          password2: '',
+        },
+        validate: signupFormvalidate,
 
-    const handleSubmit = (e) => {
-       e.preventDefault()
-       console.log(formState)
-    }
+        onSubmit: values => {
+          signupUserAction(values)
+        },
+    });
+
+    let location = useLocation
+    useEffect(()=> {
+        closeAlert()
+    }, [location])
 
     return ( 
         <div className="signup">
             <div className="signup__box">
-                <form onSubmit={handleSubmit}>
+                {/* { show_alert && <div className={`alert__${alert_level}`} >{ alert_message } <button onClick={() => closeAlert()} className="alert__dismiss">X</button></div> } */}
+                <form onSubmit={formik.handleSubmit}>
                     <div className="input__wrap">
-                        <label>username:</label>
-                        <input name="username" onChange={handleChange} type="text" placeholder="@cyber-dev"/>
+                        <label htmlFor="username">username:</label>
+                        <input 
+                            id="username"
+                            name="username" 
+                            onChange={formik.handleChange} 
+                            value={formik.values.username}
+                            type="text" 
+                        />
+                        { formik.errors.username ? <div className="error">{ formik.errors.username }</div> : null }
                     </div>
                     <div className="input__wrap">
-                        <label>Password:</label>
-                        <input name="password1" onChange={handleChange} type="password" />
+                        <label htmlFor="password1" >Password:</label>
+                        <input 
+                            id="password1"
+                            name="password1" 
+                            onChange={formik.handleChange}
+                            value={formik.values.password1} 
+                            type="password" 
+                        />
+                        { formik.errors.password1 ? <div className="error">{ formik.errors.password1 }</div> : null }
                     </div>
                     <div className="input__wrap">
-                        <label>Confirm Password:</label>
-                        <input name="password2" onChange={handleChange} type="password" />
+                        <label htmlFor="password1" >Confirm Password:</label>
+                        <input 
+                            id="password2"
+                            name="password2" 
+                            onChange={formik.handleChange}
+                            value={formik.values.password2} 
+                            type="password" 
+                        />
+                        { formik.errors.password2 ? <div className="error">{ formik.errors.password2 }</div> : null }
                     </div>
                     <div className="input__wrap">
-                        <button className="submit__btn" >signup</button>
+                        <button type="submit" className="submit__btn" >signup</button>
                     </div>
 
                     <i> 
@@ -56,13 +86,13 @@ const Signup = ({ signupUserAction }) => {
      );
 }
 
-// function mapStateToProps(store) {
-//     return {
-//         characters: store.characters.characters,
-//         character: store.characters.currentCharracter,
-//         showModal: store.characters.showModal,
-//         fetching: store.characters.fetching,
-//     }
-// }
 
-export default connect(null, { signupUserAction })(Signup)
+function mapStateToProps(store) {
+    return {
+        show_alert: store.generic.show_alert,
+        alert_message: store.generic.alert_message,
+        alert_level: store.generic.alert_level,
+    }
+}
+
+export default connect(mapStateToProps, { signupUserAction, closeAlert })(Signup)

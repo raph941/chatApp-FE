@@ -45,6 +45,16 @@
     background: transparent;
 }
 
+.no_active_chat_msg{
+    display: flex;
+    justify-content: center;
+    height: inherit;
+    align-items: center;
+    font-size: large;
+    color: #443a33;
+    font-weight: bold;
+}
+
 @media (max-width: 768px) {
     .chatMain{
         flex: 1;
