@@ -21,3 +21,4 @@ export const CLOSE_ALERT = 'CLOSE_ALERT'
 // CHAT
 export const GET_CONVERATION_PARTNERS = 'GET_CONVERATION_PARTNERS'  // get a list of all users i have had a conversation with
 export const SEARCH_USER = 'SEARCH_USER'
+export const CLEAR_SEARCH = 'CLEAR_SEARCH'

@@ -27,20 +27,51 @@
     border: 0px;
     align-self: center;
     padding: 5px;
+    flex: 0.97;
 }
 
 .search__wrap > svg {
     padding-left: 5px;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.cancel-icon-wrap{
+    cursor: pointer;
 }
 
 .search_contact:focus{
     outline: none;
 }
 
+.search__dialog{
+    background: white;
+    max-height: 300px;
+    z-index: 10;
+    border: 1px solid #c9a586;
+    overflow-y: scroll;
+}
+
+.search-item{
+    color: #030303;
+    padding: 5px 0px;
+    margin: 10px;
+    font-size: initial;
+    cursor: pointer;
+}
+
+.search-item:hover{
+    background: #faebd78c;
+}
+
 @media (max-width: 576px) {
     .chatSidebar{
         flex: 1;
         /* overflow-y */
+    }
+    .search__dialog{
+        width: 100%;
+        position: absolute;
     }
 }
 

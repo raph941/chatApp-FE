@@ -8,7 +8,7 @@ const ChatArea = () => {
     const [ width, setWidth ] = useState(window.innerWidth)
     const [ openMain, setOpenMain ] = useState(true)
     const [ openSide, setOpenSide ] = useState(true)
-    const [ sideClicked, setSideClicked ] = useState(true)
+    const [ sideClicked, setSideClicked ] = useState(false)
 
     window.addEventListener("resize", function(){
         setWidth(window.innerWidth)

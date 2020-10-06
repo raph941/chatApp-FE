@@ -5,7 +5,7 @@ import ChatMessage from './ChatMessage'
 import ActiveChatHeader from './ActiveChatHeader'
 
 const ChatMain = () => {
-    const [ activeChat, setActiveChat ] = useState(true)
+    const [ activeChat, setActiveChat ] = useState(false)
     const [ loading, setLoading ] = useState(true)
 
     return ( 
