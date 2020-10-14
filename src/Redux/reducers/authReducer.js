@@ -21,7 +21,7 @@ export default function(state = initialState, action) {
         case LOGOUT_USER:
             return {
                 ...state,
-                user: action.payload.user
+                user: action.payload.user, is_auth: action.payload.is_auth
             }
         case FETCH_USER_DATA:
             return {

@@ -1,13 +1,11 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux'
 import '../styles/Login.css';
-import { Link, useLocation, Redirect } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useFormik } from 'formik';
 import { loginFormvalidate } from '../utils/formValidation'
 import { loginUserAction } from '../Redux/actions/authActions'
 import { closeAlert } from '../Redux/actions/genericActions'
-import authReducer from '../Redux/reducers/authReducer';
-import Cookies from 'js-cookie'
 
 
 const Login = ({ loginUserAction, show_alert, alert_message, alert_level, closeAlert, user, authenticated }) => {

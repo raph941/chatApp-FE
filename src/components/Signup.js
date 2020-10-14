@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux'
 import '../styles/Signup.css';
 import { Link, useLocation } from 'react-router-dom'
 import { signupUserAction } from '../Redux/actions/authActions'
-import { alertAction, showAlertAction, closeAlert } from '../Redux/actions/genericActions'
+import { closeAlert } from '../Redux/actions/genericActions'
 import { useFormik } from 'formik';
 import { signupFormvalidate } from '../utils/formValidation'
 

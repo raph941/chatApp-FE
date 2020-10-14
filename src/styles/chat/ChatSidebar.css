@@ -45,7 +45,7 @@
 }
 
 .search__dialog{
-    background: white;
+    background: antiquewhite;
     max-height: 300px;
     z-index: 10;
     border: 1px solid #c9a586;
@@ -53,15 +53,29 @@
 }
 
 .search-item{
-    color: #030303;
-    padding: 5px 0px;
+    color: #0b101b;
+    padding: 5px;
     margin: 10px;
     font-size: initial;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #b47e4e;
 }
 
 .search-item:hover{
     background: #faebd78c;
+}
+
+.no-result{
+    color: #0b101b;
+    padding: 5px;
+    margin: 10px;
+    font-size: initial;   
+}
+
+.search__username{
+    padding-left: 10px;
 }
 
 @media (max-width: 576px) {

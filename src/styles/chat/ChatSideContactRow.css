@@ -3,6 +3,11 @@
     align-items: center;
     padding-right: 10px;
     padding-left: 10px;
+    cursor: pointer;
+}
+
+.Contact__row:hover{
+    background: antiquewhite;
 }
 
 .contact__row-text {
@@ -19,15 +24,28 @@
     color: grey;
 }
 
+.contact__row-indicators {
+    display: flex;
+    flex-direction: column;
+}
+
 .contact__row-indicators > p{
     margin-bottom: 3px;
 }
 
 .contact__row-indicators:nth-child(1){
     margin-top: 0px;
-    
 }
 
 .badge{
     background: #c8d339;
+    width: fit-content;
+    align-self: flex-end;
+}
+
+.chat__bottom > svg {
+    display: flex;
+    float: right;
+    font-size: 25px;
+    color: #d7f9f9;
 }

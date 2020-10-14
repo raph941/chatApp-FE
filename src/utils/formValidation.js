@@ -37,3 +37,17 @@ export const loginFormvalidate = values => {
 
     return errors;
 }
+
+
+// chat input validator
+export const chatInputvalidate = values => {
+  const errors = {};
+
+  switch(true) {
+      case !values.message:
+        errors.username = 'Required'
+      break;
+    }
+
+  return errors;
+}

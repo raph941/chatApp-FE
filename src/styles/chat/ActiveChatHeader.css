@@ -1,10 +1,25 @@
 .chatHead{
     display: flex;
     padding: 20px 20px;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
+    background: beige;
 }
 
 .chatHead > svg {
     font-size: 35px;
     padding-right: 10px;
+}
+
+.chatHead__username{
+    font-size: initial;
+    padding-left: 20px;
+}
+
+.icon__wrap{
+    align-self: center;
+}
+
+.icon__wrap > svg {
+    font-size: 35px;
+    cursor: pointer;
 }

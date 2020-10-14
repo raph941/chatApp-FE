@@ -5,8 +5,16 @@
     color: #fffcf9;
     background: #80808082;
     display: flex;
-    justify-content: space-between;
     margin: 10px;
+    min-width: 300px;
+}
+
+.chat_text_wrap{
+    flex:1
+}
+
+#float__right{
+    align-self: flex-end;
 }
 
 .chat__top{

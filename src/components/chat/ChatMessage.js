@@ -1,25 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { connect } from 'react-redux'
 import '../../styles/chat/ChatMessage.css';
 import Avatar from '@material-ui/core/Avatar'
+import DoneAllIcon from '@material-ui/icons/DoneAll'
+import Moment from 'react-moment';
+import 'moment-timezone';
 
 
-const ChatMessage = () => {
+const ChatMessage = ({ read_at, sent_at, msg_content, sender_username, sender_image_url, user }) => {
+    const [ float_direction ] = useState(() => (
+        sender_username === user.username ? 'float__right' : 'float__left'
+    ))
+
     return ( 
-        <div className="chatMessage">
+        <div className='chatMessage' id={float_direction}>
             <span className="chat_avatar_wrap">
-                <Avatar src="https://lh3.googleusercontent.com/ogw/ADGmqu_E0QeWyWCVvgqWJYxehJcs7uyerWLjHjy_uppw=s32-c-mo" />   
+                <Avatar src={ sender_image_url } />   
             </span>
-            <div>
-                <span class="chat__top">
-                    <h5>Harry Potter</h5>
-                    <p>1:00am</p>
+            <div className="chat_text_wrap">
+                <span className="chat__top">
+                    <h5>{ sender_username }</h5>
+                    <p><Moment fromNow ago>{ sent_at }</Moment></p>
                 </span>
                 <span className="chat__bottom">
-                   <p> I am on my way to raid the bank guarded by the goblins </p> 
+                   <p> {msg_content} </p> 
+                   {sender_username === user.username && read_at !== undefined &&
+                        <DoneAllIcon />
+                   }
                 </span>
             </div>
         </div>
      );
 }
  
-export default ChatMessage
+
+function mapStateToProps(store) {
+    return {
+        user: store.auth.user,
+    }
+}
+
+export default connect(mapStateToProps, {})(ChatMessage)

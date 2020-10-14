@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { closeAlert } from '../Redux/actions/genericActions'
 import { connect } from 'react-redux'
 import { useLocation } from 'react-router-dom'

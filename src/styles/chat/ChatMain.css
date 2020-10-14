@@ -10,6 +10,8 @@
     overflow-y: scroll;
     padding: 20px;
     margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Hide Scrollbar on Chrome, Safari and Opera */
