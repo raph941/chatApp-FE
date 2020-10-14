@@ -12,9 +12,7 @@ let WithStore = () => <Provider store={store}><WithRouter /> </Provider>
 
 
 ReactDOM.render(
-  <React.StrictMode>
-    <WithStore />
-  </React.StrictMode>,
+    <WithStore />,
   document.getElementById('root')
 );
 
