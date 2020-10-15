@@ -3,6 +3,7 @@ import Cookies from 'js-cookie'
 import axios from '../../axios/axios'
 import store from '../store'
 
+// const baseUrl = 'https://chatapp-be-api.herokuapp.com'
 const baseUrl = 'http://127.0.0.1:8000'
 const token = Cookies.get('token')
 
@@ -46,6 +47,7 @@ export const fetchMyConversationPartners = () => dispatch =>  {
     })
     .then((response) => response.data)
     .then((data) => {
+        console.log(data)
         dispatch ({ type: FETCH_CONVERSATION_PARTNERS, payload: { conversation_partners: data } })
     }).catch((err) => {
         console.log(err)
@@ -55,7 +57,6 @@ export const fetchMyConversationPartners = () => dispatch =>  {
 
 export const fetchConvMessages = data => dispatch =>  {  
     // gets a lists of users i have had a conversation with
-    // data: int
     dispatch ({ type: CLEAR_ACTIVE_CONV_MSGS })
     dispatch ({ type: ACTIVE_CONV_PARTNER, payload: data })
     axios.get(`${baseUrl}/conversation/messages/${data.id}`, {

@@ -2,6 +2,7 @@ import { LOGIN_USER, IS_AUTH, UPDATE_USER, SHOW_ALERT, ALERT } from './types';
 import Cookies from 'js-cookie'
 import axios from '../../axios/axios'
 
+// const baseUrl = 'https://chatapp-be-api.herokuapp.com'
 const baseUrl = 'http://127.0.0.1:8000'
 
 export const loginUserAction = data => dispatch =>  {  
@@ -16,11 +17,11 @@ export const loginUserAction = data => dispatch =>  {
         let token = data.token
         Cookies.set('token', token);
         delete data['token']
-        console.log(data)
         dispatch ({ type: LOGIN_USER, payload: { user: data, is_auth: true } })
         window.location.reload()
         
     }).catch((err) => {
+        console.log(err)
         dispatch ({ type: SHOW_ALERT, payload: true })
         dispatch ({ type: ALERT, payload: {alert_level:'danger', alert_message:'Incorrect credentials please try again, with the correct credentials'} })
         
@@ -40,10 +41,10 @@ export const signupUserAction = data => dispatch =>  {
         data: _data,
     })
     .then((response) => {
-        console.log(response)
-
         dispatch ({ type: SHOW_ALERT, payload: true })
         dispatch ({ type: ALERT, payload: {alert_level:'success', alert_message:'your signup was succesful'} })
+        const origin = window.location.origin
+        window.location.href = `${origin}/login`;
 
     }).catch((err) => {
         console.log(err)
@@ -71,7 +72,6 @@ export const fetchUserAction = () => dispatch => {
     })
     .then((response) => response.data) 
     .then((data) => {
-        console.log(data)
         dispatch({ type: UPDATE_USER, payload: { user: data } })
     }).catch((err) => {
         
