@@ -3,8 +3,8 @@ import Cookies from 'js-cookie'
 import axios from '../../axios/axios'
 import store from '../store'
 
-// const baseUrl = 'https://chatapp-be-api.herokuapp.com'
-const baseUrl = 'http://127.0.0.1:8000'
+const baseUrl = 'https://chatapp-be-api.herokuapp.com'
+// const baseUrl = 'http://127.0.0.1:8000'
 const token = Cookies.get('token')
 
 

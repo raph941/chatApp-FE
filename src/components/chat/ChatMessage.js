@@ -26,7 +26,6 @@ const ChatMessage = ({ read_at, sent_at, msg_content, sender_username, sender_im
                    <p> {msg_content} </p> 
                    {sender_username === user.username && read_at !== null &&
                         <DoneAllIcon />
-                        // console.log(read_at)
                    }
                 </span>
             </div>
