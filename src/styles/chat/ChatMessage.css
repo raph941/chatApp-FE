@@ -15,6 +15,7 @@
 
 #float__right{
     align-self: flex-end;
+    float: right;
 }
 
 .chat__top{
@@ -55,4 +56,8 @@
         margin-left: 10px;
         margin-bottom: 0;
     }
+}
+
+@media (min-width: 678px) {
+    
 }

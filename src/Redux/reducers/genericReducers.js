@@ -3,7 +3,7 @@ import { ALERT, SHOW_ALERT, CLOSE_ALERT } from '../actions/types';
 let initialState = {
     alert_level: 'success',
     show_alert: false,
-    alert_message: true
+    alert_message: true,
 }
 
 export default function(state = initialState, action) {

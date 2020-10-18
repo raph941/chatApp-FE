@@ -1,6 +1,9 @@
-import { addNewMessage } from '../Redux/actions/chatActions'
+import { addNewMessage, addNoneActiveNewMessage } from '../Redux/actions/chatActions'
 import store from '../Redux/store'
+
 const API_PATH = 'ws://localhost:8000/chat/';
+// const API_PATH = 'ws://chatapp-be-api.herokuapp.com/chat/';
+// const token = Cookies.get('token')
 
 
 class WebSocketService {
@@ -24,17 +27,38 @@ class WebSocketService {
     let connectInterval;
     
     this.socketRef.onopen = () => {
-      console.log('Yaay my socket is conected');
+      const user = store.getState().auth.user
+      // this would create a chat layer with all the conversation partners, 
+      // so that the user can recieve messages from all partners in real time
+      let data = {
+        type: "INITIAL_SETUP",
+        payload: user.id
+      }
+      this.send(data)
+      console.log('Connection Successful');
     };
 
     this.socketRef.onmessage = e => {
+        console.log(e)
         const data = JSON.parse(e.data)
-        store.dispatch(addNewMessage([data]))
+        let currentUser = store.getState().auth.user
+        const activeConvPartner = store.getState().chat.active_conv_partner
 
+        if ( currentUser.username === data.sender.username){
+          store.dispatch(addNewMessage([data]))
+        }
+        else {
+          if (data.sender.username === activeConvPartner.username){
+            store.dispatch(addNewMessage([data]))
+          }
+          else{
+            store.dispatch(addNoneActiveNewMessage(data))
+          }
+        }
     };
 
     this.socketRef.onerror = e => {
-      console.log(e.message);
+      console.log(e);
     };
 
     this.socketRef.onclose = () => {

@@ -6,7 +6,8 @@ import ChatSidebar from './ChatSidebar';
 import { setActiveChat } from '../../Redux/actions/chatActions'
 import { connectToSocketAction, sendNewMessageAction } from '../../Redux/actions/chatSocketActions'
 
-const ChatArea = ({ setActiveChat, isActiveChat, connectToSocketAction, sendNewMessageAction }) => {
+
+const ChatArea = ({ isActiveChat, connectToSocketAction }) => {
     const [ width, setWidth ] = useState(window.innerWidth)
     const [ openMain, setOpenMain ] = useState(true)
     const [ openSide, setOpenSide ] = useState(true)

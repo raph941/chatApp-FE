@@ -1,13 +1,13 @@
 .Contact__row{
     display: flex;
     align-items: center;
-    padding-right: 10px;
-    padding-left: 10px;
+    padding: 10px;
     cursor: pointer;
+    box-shadow: 0px 2px 11px -1px rgb(0 0 0 / 7%);
 }
 
 .Contact__row:hover{
-    background: antiquewhite;
+    background: #cccccc9c;
 }
 
 .contact__row-text {

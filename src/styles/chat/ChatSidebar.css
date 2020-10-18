@@ -1,6 +1,7 @@
 .chatSidebar{
     flex: 0.3;
     overflow-y: scroll;
+    background: #aab1bb17;
 }
 
 /* Hide Scrollbar on Chrome, Safari and Opera */

@@ -1,4 +1,4 @@
-import { SEARCH_USER, CLEAR_SEARCH, FETCH_CONVERSATION_PARTNERS, FETCH_CONVERSATION, ACTIVE_CONV_PARTNER, CLEAR_ACTIVE_CONV_MSGS, SET_ACTIVE_CHAT, ADD_NEW_MESSAGE } from '../actions/types'
+import { SEARCH_USER, CLEAR_SEARCH, FETCH_CONVERSATION_PARTNERS, FETCH_CONVERSATION, ACTIVE_CONV_PARTNER, CLEAR_ACTIVE_CONV_MSGS, SET_ACTIVE_CHAT, ADD_NEW_MESSAGE, ADD_NEW_MESSAGE_INACTIVE } from '../actions/types'
 
 let initialState = {
     conversation_partners: [],
@@ -53,6 +53,11 @@ export default function (state = initialState, action) {
             return { 
                 ...state,
                 active_conversation: state.active_conversation.concat(action.payload)
+            }
+        case ADD_NEW_MESSAGE_INACTIVE :
+            return { 
+                ...state,
+                conversation_partners: action.payload
             }
         default:
             return state

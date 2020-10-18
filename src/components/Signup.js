@@ -11,6 +11,7 @@ import { signupFormvalidate } from '../utils/formValidation'
 const Signup = ({ signupUserAction, show_alert, alert_message, alert_level, showAlertAction, user, closeAlert }) => {
     const formik = useFormik({
         initialValues: {
+          fullname: '',
           username: '',
           password1: '',
           password2: '',
@@ -32,6 +33,17 @@ const Signup = ({ signupUserAction, show_alert, alert_message, alert_level, show
             <div className="signup__box">
                 {/* { show_alert && <div className={`alert__${alert_level}`} >{ alert_message } <button onClick={() => closeAlert()} className="alert__dismiss">X</button></div> } */}
                 <form onSubmit={formik.handleSubmit}>
+                    <div className="input__wrap">
+                        <label htmlFor="username">fullname:</label>
+                        <input 
+                            id="fullname"
+                            name="fullname" 
+                            onChange={formik.handleChange} 
+                            value={formik.values.fullname}
+                            type="text" 
+                        />
+                        { formik.errors.fullname ? <div className="error">{ formik.errors.fullname }</div> : null }
+                    </div>
                     <div className="input__wrap">
                         <label htmlFor="username">username:</label>
                         <input 

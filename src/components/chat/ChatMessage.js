@@ -7,7 +7,7 @@ import Moment from 'react-moment';
 import 'moment-timezone';
 
 
-const ChatMessage = ({ read_at, sent_at, msg_content, sender_username, sender_image_url, user }) => {
+const ChatMessage = ({ read_at, sent_at, msg_content, sender_username, sender_initials, user }) => {
     const [ float_direction ] = useState(() => (
         sender_username === user.username ? 'float__right' : 'float__left'
     ))
@@ -15,7 +15,7 @@ const ChatMessage = ({ read_at, sent_at, msg_content, sender_username, sender_im
     return ( 
         <div className='chatMessage' id={float_direction}>
             <span className="chat_avatar_wrap">
-                <Avatar src={ sender_image_url } />   
+                <Avatar > { sender_initials } </Avatar>
             </span>
             <div className="chat_text_wrap">
                 <span className="chat__top">

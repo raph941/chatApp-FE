@@ -3,10 +3,10 @@ import { connect } from 'react-redux'
 import '../../styles/chat/ChatSidebar.css';
 import SearchIcon from '@material-ui/icons/Search'
 import ChatSideContactRow from '../../components/chat/ChatSideContactRow'
-import { clearSearch, searchUsers, fetchMyConversationPartners } from '../../Redux/actions/chatActions'
+import { clearSearch, searchUsers, fetchMyConversationPartners, clickSearchedUser } from '../../Redux/actions/chatActions'
 import Avatar from '@material-ui/core/Avatar'
 
-const ChatSidebar = ({ clearSearch, show_search_data, searched_users, searchUsers, fetchMyConversationPartners, conversation_partners }) => {
+const ChatSidebar = ({ clearSearch, show_search_data, searched_users, searchUsers, fetchMyConversationPartners, conversation_partners, clickSearchedUser }) => {
     const [ query, setQuery ] = useState('')
 
     const handleInputChange = (e) => {
@@ -19,9 +19,13 @@ const ChatSidebar = ({ clearSearch, show_search_data, searched_users, searchUser
         }
     }
 
+    const handleSearchClick = (user) => {
+        clickSearchedUser(user)
+        clearSearch()
+    }
+
     useEffect(() =>  {
         fetchMyConversationPartners()
-        console.log(conversation_partners)
     }, [])
 
     return ( 
@@ -35,8 +39,8 @@ const ChatSidebar = ({ clearSearch, show_search_data, searched_users, searchUser
                     { searched_users.length > 0 
                     ?
                         searched_users?.map((user) => 
-                            <div key={user?.id} className="search-item">
-                                <Avatar src={user.image_url} />   
+                            <div key={user?.id} className="search-item" onClick={() => handleSearchClick(user)} >
+                                <Avatar > { user.initials } </Avatar >   
                                 <span className="search__username" >{user?.username}</span>
                             </div>
                         )
@@ -47,7 +51,7 @@ const ChatSidebar = ({ clearSearch, show_search_data, searched_users, searchUser
             }
             
             { conversation_partners?.map((partner) => (
-                <ChatSideContactRow key={partner?.id} id={partner?.id} username={partner?.username} image_url={partner?.image_url} lastmsg_content={partner?.lastmsg} lastmsg_day="Tue" unraed_count={partner?.unread_count} sent_at={partner?.lastmsg_date} />
+                <ChatSideContactRow key={partner?.id} id={partner?.id} username={partner?.username} initials={partner?.initials} lastmsg_content={partner?.lastmsg} lastmsg_day="Tue" unraed_count={partner?.unread_count} sent_at={partner?.lastmsg_date} />
             ))}
             
         </div>
@@ -62,4 +66,4 @@ function mapStateToProps(store) {
     }
 }
 
-export default connect(mapStateToProps, { clearSearch, searchUsers, fetchMyConversationPartners })(ChatSidebar)
+export default connect(mapStateToProps, { clearSearch, searchUsers, fetchMyConversationPartners, clickSearchedUser })(ChatSidebar)

@@ -10,7 +10,7 @@ const ActiveChatHead = ({ activeConvPartner, setActiveChat }) => {
     return ( 
         <div className="chatHead">
             <span className="icon__wrap" onClick={() => setActiveChat(false)}><SwapHorizIcon /></span>
-            <Avatar src={ activeConvPartner?.image_url } />   
+            <Avatar > { activeConvPartner?.initials } </Avatar>   
             <h5 className="chatHead__username">{ activeConvPartner?.username }</h5>
         </div> 
     );

@@ -6,9 +6,16 @@ import Avatar from '@material-ui/core/Avatar';
 import { connect } from 'react-redux'
 import { closeAlert } from '../Redux/actions/genericActions'
 import { fetchUserAction, logoutAction } from '../Redux/actions/authActions'
+import ProfileModal from '../components/modals/userProfileModal'
+import { getInitials } from '../utils/genericUtils'
+
 
 
 const Navbar = ({ show_alert, alert_message, alert_level, closeAlert, user, authenticated, fetchUserAction, logoutAction }) => {
+
+    const handleInitials = () => {
+        return getInitials(user?.fullname)
+    }
 
     useEffect(() => {
         if(authenticated){
@@ -26,12 +33,15 @@ const Navbar = ({ show_alert, alert_message, alert_level, closeAlert, user, auth
                 <h5>Let's Talk.</h5>
             </div>
 
-            <div className="navbar__right d-none">
+            {/* User profile modal */}
+            < ProfileModal />
+
+            <div className="navbar__right">
                 { authenticated 
                 ? 
                     <>
                     <p onClick={() => logoutAction()} className="nav-item-logout">Logout</p>
-                    <Avatar src={ user?.image_url } />   
+                        <Avatar >{ user.initials }</Avatar >   
                     {/* <Link to="/chat" className="nav-item">Chat</Link> */}
                     </>
                 :

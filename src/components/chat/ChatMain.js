@@ -38,11 +38,11 @@ const ChatMain = ({ isActiveConv, activeConvs, sendNewMessageAction, user, partn
               </div> 
             }
             
-            <ScrollToBottom className="chatmain__chat" >
+            <ScrollToBottom className="chatmain__chat" scrollViewClassName='messages__container'	>
                 { isActiveConv 
                     ?  <>
                         {activeConvs.map((message) => (
-                            <ChatMessage key={message?.id} sent_at={message?.sent_at} read_at={message?.read_at} msg_content={message?.content} sender_username={message?.sender?.username} sender_image_url={message?.sender?.image_url}  />
+                            <ChatMessage key={message?.id} sent_at={message?.sent_at} read_at={message?.read_at} msg_content={message?.content} sender_username={message?.sender?.username} sender_initials={message?.sender?.initials}  />
                         ))}
                         
                        </>

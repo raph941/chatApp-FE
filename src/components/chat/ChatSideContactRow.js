@@ -9,21 +9,20 @@ import '../../styles/chat/ChatSideContactRow.css'
 import { startChatAction } from '../../Redux/actions/chatSocketActions'
 
 
-const ChatSideContactRow = ({ id, username, image_url, lastmsg_content, sent_at, unraed_count, fetchConvMessages, startChatAction, user }) => {
+const ChatSideContactRow = ({ id, username, initials, lastmsg_content, sent_at, unraed_count, fetchConvMessages, startChatAction, user }) => {
 
     const handleClick = () => {
         let data = {
             id: id,
             username: username,
-            image_url: image_url
+            initials: initials
         }
         fetchConvMessages(data)
-        startChatAction({uid1: user.id, uid2: id})
     }
 
     return ( 
-        <div className='Contact__row' onClick={handleClick}>
-            <Avatar src={image_url} />   
+        <div className='Contact__row' onClick={handleClick} >
+            <Avatar > { initials } </Avatar>   
             <span className="contact__row-text">
                 <h4>{ username }</h4>
                 <p>{ truncate(lastmsg_content, 30) }</p>

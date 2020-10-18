@@ -2,16 +2,20 @@ import { LOGIN_USER, IS_AUTH, UPDATE_USER, SHOW_ALERT, ALERT } from './types';
 import Cookies from 'js-cookie'
 import axios from '../../axios/axios'
 
-const baseUrl = 'https://chatapp-be-api.herokuapp.com'
-// const baseUrl = 'http://127.0.0.1:8000'
+// const baseUrl = 'https://chatapp-be-api.herokuapp.com'
+const baseUrl = 'http://127.0.0.1:8000'
 
 export const loginUserAction = data => dispatch =>  {  
-    
-    axios.post(`${baseUrl}/user/login/`, 
-        JSON.stringify(data)
-    )
+    console.log(data)
+    axios({
+        method: 'post',
+        url: `${baseUrl}/user/login/`,
+        data : data
+    })
+
     .then((res) => res.data)
     .then((data) => {
+        console.log(data)
         let token = data.token
         Cookies.set('token', token);
         delete data['token']
@@ -30,6 +34,7 @@ export const loginUserAction = data => dispatch =>  {
 export const signupUserAction = data => dispatch =>  {  
     const _data = {
         'username': data.username,
+        'fullname': data.fullname,
         'password': data.password1
     }
 

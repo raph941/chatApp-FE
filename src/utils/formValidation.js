@@ -4,16 +4,24 @@ export const signupFormvalidate = values => {
     const errors = {};
 
     switch(true) {
+        case !values.fullname:
+          errors.fullname = 'Required'
+          break;
+        case specialChar.test(values.fullname):
+          errors.fullname = 'fullname cannot contain special characters'
+          break
         case !values.username:
             errors.username = 'Required'
           break;
         case specialChar.test(values.username):
             errors.username = 'username cannot contain special characters'
+            break
         case !values.password1:
             errors.password1 = 'Required'
           break;
         case !values.password2:
           errors.password2 = 'Required'
+          break
         case values.password1 !== values.password2:
             errors.password2 = 'passwords does not match' 
         break;
