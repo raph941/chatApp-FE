@@ -35,7 +35,7 @@ class WebSocketService {
         payload: user.id
       }
       this.send(data)
-      console.log('Connection Successful');
+      console.log('CONNECTION SUCCESSFUL');
     };
 
     this.socketRef.onmessage = e => {
