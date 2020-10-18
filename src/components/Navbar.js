@@ -7,15 +7,9 @@ import { connect } from 'react-redux'
 import { closeAlert } from '../Redux/actions/genericActions'
 import { fetchUserAction, logoutAction } from '../Redux/actions/authActions'
 import ProfileModal from '../components/modals/userProfileModal'
-import { getInitials } from '../utils/genericUtils'
 
 
-
-const Navbar = ({ show_alert, alert_message, alert_level, closeAlert, user, authenticated, fetchUserAction, logoutAction }) => {
-
-    const handleInitials = () => {
-        return getInitials(user?.fullname)
-    }
+const Navbar = ({ user, authenticated, fetchUserAction, logoutAction }) => {
 
     useEffect(() => {
         if(authenticated){

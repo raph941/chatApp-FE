@@ -18,13 +18,13 @@ export const moveArrayItemToNewIndex = (arr, old_index, new_index) => {
 
 
 // get the initials from fullname
-export const getInitials = ( str ) => {
-    if (str !== undefined ){
-        let initials = ''
-        const text = str.split(' ')
+// export const getInitials = ( str ) => {
+//     if (str !== undefined ){
+//         let initials = ''
+//         const text = str.split(' ')
 
-        text.map((part) => {
-            initials.concat(part[0])
-        })
-    }
-}
+//         text.map((part) => {
+//             initials.concat(part[0])
+//         })
+//     }
+// }

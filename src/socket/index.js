@@ -77,7 +77,7 @@ class WebSocketService {
 
   check = () => {
     let ws = this.socketRef
-    if (!ws || ws.readyState == WebSocket.CLOSED) this.connect(); //check if websocket instance is closed, if so call `connect` function.
+    if (!ws || ws.readyState === WebSocket.CLOSED) this.connect(); //check if websocket instance is closed, if so call `connect` function.
   };
 
   state() {

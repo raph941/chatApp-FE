@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux'
 import '../../styles/chat/ChatMain.css';
 import SendIcon from '@material-ui/icons/Send'

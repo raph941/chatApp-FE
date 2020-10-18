@@ -2,8 +2,9 @@ import { SEARCH_USER, CLEAR_SEARCH, FETCH_CONVERSATION_PARTNERS, FETCH_CONVERSAT
 import Cookies from 'js-cookie'
 import axios from '../../axios/axios'
 import store from '../store'
-import { clone, cloneDeep } from "lodash"
+import { cloneDeep } from "lodash"
 import { moveArrayItemToNewIndex } from '../../utils/genericUtils'
+
 // const baseUrl = 'https://chatapp-be-api.herokuapp.com'
 const baseUrl = 'http://127.0.0.1:8000'
 const token = Cookies.get('token')
@@ -98,7 +99,7 @@ export const addNoneActiveNewMessage = message => dispatch => {
     const convPartners = store.getState().chat.conversation_partners
     let convPartnersCopy = cloneDeep(convPartners) //Note i used deep copy, to ensure that the nested objects are copied as well
     for (let i in convPartnersCopy){
-        if ( convPartnersCopy[i].username == message.sender.username ){
+        if ( convPartnersCopy[i].username === message.sender.username ){
             convPartnersCopy[i].lastmsg = message.content
             convPartnersCopy[i].unread_count ++ 
             convPartnersCopy[i].lastmsg_date = message.sent_at
@@ -114,7 +115,6 @@ export const addNoneActiveNewMessage = message => dispatch => {
 
 export const clickSearchedUser = data => dispatch => {
     const convPartners = store.getState().chat.conversation_partners
-    const username = data.username
     let userExists = false
     let convPartnersUpdated = []
 

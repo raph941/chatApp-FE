@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Modal from 'react-bootstrap/Modal'
 import { connect } from 'react-redux'
 import Avatar from '@material-ui/core/Avatar';
@@ -11,7 +11,6 @@ const ProfileModal = ({ user }) => {
       <>
         <Modal
           show={false}
-          onHide=''
           dialogClassName="modal-90w"
           aria-labelledby="example-custom-modal-styling-title"
           fade={false}
