@@ -14,4 +14,4 @@ export const baseURL = 'https://chatapp-be-api.herokuapp.com/'
 
 
 // export const API_PATH = 'ws://localhost:8000/chat/';
-export const API_PATH = 'ws://chatapp-be-api.herokuapp.com/chat/';
+export const API_PATH = 'wss://chatapp-be-api.herokuapp.com/chat/';
