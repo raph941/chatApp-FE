@@ -8,3 +8,10 @@ const instance = axios.create({
 
 
 export default instance
+
+// export const baseURL = 'https://chatapp-be-api.herokuapp.com/'
+// export const baseURL = 'http://127.0.0.1:8000'
+
+
+// export const API_PATH = 'ws://localhost:8000/chat/';
+export const API_PATH = 'ws://chatapp-be-api.herokuapp.com/chat/';

@@ -1,18 +1,15 @@
 import { SEARCH_USER, CLEAR_SEARCH, FETCH_CONVERSATION_PARTNERS, FETCH_CONVERSATION , CLEAR_ACTIVE_CONV_MSGS, ACTIVE_CONV_PARTNER, SET_ACTIVE_CHAT, ADD_NEW_MESSAGE, ADD_NEW_MESSAGE_INACTIVE} from './types'
 import Cookies from 'js-cookie'
-import axios from '../../axios/axios'
+import axios, { baseURL } from '../../axios/axios'
 import store from '../store'
 import { cloneDeep } from "lodash"
 import { moveArrayItemToNewIndex } from '../../utils/genericUtils'
 
-// const baseUrl = 'https://chatapp-be-api.herokuapp.com'
-const baseUrl = 'http://127.0.0.1:8000'
 const token = Cookies.get('token')
-
 
 export const searchUsers = data => dispatch =>  {  
     // gets a list of users givern an input search parameter
-    axios.get(`${baseUrl}/users/search`, {
+    axios.get(`${baseURL}/users/search`, {
         params: {
             'query':data
         },
@@ -42,7 +39,7 @@ export const clearSearch = () => dispatch =>  {
 
 export const fetchMyConversationPartners = () => dispatch =>  {  
     // gets a lists of users i have had a conversation with
-    axios.get(`${baseUrl}/conversation/partners`, {
+    axios.get(`${baseURL}/conversation/partners`, {
         headers: {
             'Authorization': `Token ${token}`
         },
@@ -66,7 +63,7 @@ export const fetchConvMessages = data => dispatch =>  {
     // gets a lists of users i have had a conversation with
     dispatch ({ type: CLEAR_ACTIVE_CONV_MSGS })
     dispatch ({ type: ACTIVE_CONV_PARTNER, payload: data })
-    axios.get(`${baseUrl}/conversation/messages/${data.id}`, {
+    axios.get(`${baseURL}/conversation/messages/${data.id}`, {
         headers: {
             'Authorization': `Token ${token}`
         },

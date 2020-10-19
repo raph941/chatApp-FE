@@ -1,8 +1,6 @@
 import { addNewMessage, addNoneActiveNewMessage } from '../Redux/actions/chatActions'
 import store from '../Redux/store'
-
-const API_PATH = 'ws://localhost:8000/chat/';
-// const API_PATH = 'ws://chatapp-be-api.herokuapp.com/chat/';
+import { API_PATH } from '../axios/axios'
 // const token = Cookies.get('token')
 
 
