@@ -32,7 +32,7 @@ const ChatSidebar = ({ clearSearch, show_search_data, searched_users, searchUser
         <div className="chatSidebar">
             <div className="search__wrap">
                 <SearchIcon />
-                <input value={query} className="search_contact" placeholder="@captain-poldark" onChange={handleInputChange} />
+                <input value={query} className="search_contact" placeholder="username" onChange={handleInputChange} />
             </div>
             { show_search_data &&
                 <div className="search__dialog" onBlur={()=>console.log('blur')} onFocus={() => console.log('focus')}>

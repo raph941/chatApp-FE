@@ -7,12 +7,12 @@ import { moveArrayItemToNewIndex } from '../../utils/genericUtils'
 
 const token = Cookies.get('token')
 
-export const searchUsers = data => dispatch =>  {  
+export const searchUsers = query => dispatch =>  {  
     // gets a list of users givern an input search parameter
-    axios.get(`${baseURL}/users/search`, {
-        params: {
-            'query':data
-        },
+    axios.get(`${baseURL}/users/search/?username=${query}`, {
+        // params: {
+        //     'query':data
+        // },
         headers: {
             'Authorization': `Token ${token}`
         },
