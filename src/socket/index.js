@@ -1,6 +1,6 @@
 import { addNewMessage, addNoneActiveNewMessage } from '../Redux/actions/chatActions'
 import store from '../Redux/store'
-import { API_PATH } from '../axios/axios'
+import { SOCKET_PATH } from '../axios/axios'
 // const token = Cookies.get('token')
 
 
@@ -21,7 +21,7 @@ class WebSocketService {
   }
 
   connect() {
-    this.socketRef = new WebSocket(API_PATH);
+    this.socketRef = new WebSocket(SOCKET_PATH);
     let connectInterval;
     
     this.socketRef.onopen = () => {

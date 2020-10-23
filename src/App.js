@@ -4,6 +4,8 @@ import Navbar from './components/Navbar';
 import RoutePaths from './Router/RoutPaths'
 import Footer from './components/Footer'
 import Generic from './components/GenericComponent'
+require('dotenv').config()
+
 
 function App() {
   return (
