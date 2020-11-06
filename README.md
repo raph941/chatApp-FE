@@ -2,8 +2,7 @@
 [![Made with React](https://img.shields.io/badge/made%20with-React-orange.svg)](https://reactjs.org/)
 
 React app, to chat in real time with various users.
-![CriminalApp Image](https://res.cloudinary.com/raph941/image/upload/v1604642174/Github%20/CRM/slide1_vcpauy.png)
-![CriminalApp Image](https://res.cloudinary.com/raph941/image/upload/v1604642174/Github%20/CRM/slide3_a16i7p.png)
+![ChatApp Image](https://res.cloudinary.com/raph941/image/upload/v1604640769/Github%20/chatpp/chat4_zfakkb.png)
 
 ## Top Packages Used
 * Redux
