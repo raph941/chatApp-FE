@@ -9,6 +9,7 @@ React app, to chat in real time with various users.
 * Axios / Fetch API
 * WebSocket
 * React Router
+* lodash
 
 ## Backend 
 Built With Django rest framework
