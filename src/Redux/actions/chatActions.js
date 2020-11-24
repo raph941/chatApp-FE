@@ -46,7 +46,6 @@ export const fetchMyConversationPartners = () => dispatch =>  {
     })
     .then((response) => response.data)
     .then((data) => {
-        console.log(data)
         let sortedData = data.sort(function(a, b){
             var dateA=new Date(a.lastmsg_date), dateB=new Date(b.lastmsg_date)
             return dateB-dateA //sort by date ascending

@@ -4,7 +4,6 @@ import axios, { baseURL } from '../../axios/axios'
 
 
 export const loginUserAction = data => dispatch =>  {  
-    console.log(data)
     axios({
         method: 'post',
         url: `${baseURL}/user/login/`,
@@ -13,7 +12,6 @@ export const loginUserAction = data => dispatch =>  {
 
     .then((res) => res.data)
     .then((data) => {
-        console.log(data)
         let token = data.token
         Cookies.set('token', token);
         delete data['token']
@@ -82,7 +80,6 @@ export const fetchUserAction = () => dispatch => {
 
 export const logoutAction = () => dispatch => {
     Cookies.remove('token')
-    console.log('here')
     dispatch(
         { 
             type: UPDATE_USER, 

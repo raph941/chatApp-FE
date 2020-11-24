@@ -8,7 +8,6 @@ export const connectToSocketAction = () => dispatch => {
 
 export const sendNewMessageAction = data => dispatch => {
     let _data = {type: SEND_NEW_MESSAGE, payload: data}
-    console.log('am about to send')
     WebSocketInstance.send(_data)
 }
 

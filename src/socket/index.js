@@ -37,7 +37,6 @@ class WebSocketService {
     };
 
     this.socketRef.onmessage = e => {
-        console.log(e)
         const data = JSON.parse(e.data)
         let currentUser = store.getState().auth.user
         const activeConvPartner = store.getState().chat.active_conv_partner
@@ -87,7 +86,6 @@ class WebSocketService {
     this.waitForConnection(function () {
       try {
           inst.send(JSON.stringify({ ...data }));
-          console.log('message sent')
         }
       catch(err) {
           console.log(err.message);
@@ -102,7 +100,7 @@ class WebSocketService {
         var that = this;
         // optional: implement backoff for interval here
         setTimeout(function () {
-          console.log('waiting')
+          console.log('WAITING TO RECONNECT')
             that.waitForConnection(callback, interval);
         }, interval);
     }
