@@ -3,10 +3,17 @@ import '../styles/Landing.css';
 import ChatImage from '../images/talk3.png';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
 import { Link } from 'react-router-dom'
+import axios, { baseURL } from '../axios/axios'
 
 
 const LandingPage = () => {
-
+    useEffect(() => {
+        // wakeup the Backend App because it takes 15s for heroku app to wakeup
+        axios({
+            method: 'get',
+            url: `${baseURL}/`,
+        })
+    }, [])
     return ( 
         <div className="landing-page-container">
             <div className="landingPage">
