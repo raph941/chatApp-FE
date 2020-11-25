@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../styles/Landing.css';
 import ChatImage from '../images/talk3.png';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
