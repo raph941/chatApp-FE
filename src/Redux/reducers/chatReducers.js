@@ -50,6 +50,15 @@ export default function (state = initialState, action) {
                 is_active_conversation: action.payload
             }
         case ADD_NEW_MESSAGE :
+            // this if statement is here because there was always duplicate of a single message 
+            // coming from the backend. so this would discard the duplicates by comparing the last message's
+            // primary key and the incoming message's primary key
+            if (state.active_conversation.length > 0){
+                if (action.payload[0]['id'] === state.active_conversation[state.active_conversation.length -1]['id']){
+                    console.log('THIS IS A DUPLICATE')
+                    return { ...state }
+                }
+            }
             return { 
                 ...state,
                 active_conversation: state.active_conversation.concat(action.payload)

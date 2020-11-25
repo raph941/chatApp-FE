@@ -50,6 +50,7 @@ const ChatMain = ({ isActiveConv, activeConvs, sendNewMessageAction, user, partn
                         <p className="no_active_chat_msg">Click on a conversation, to start a chat now</p>
                 }
             </ScrollToBottom >
+            
             { isActiveConv ?
             <form onSubmit={formik.handleSubmit} className="chatmain__input">
                 <div className="input_wrapper">

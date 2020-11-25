@@ -69,7 +69,6 @@ export const fetchConvMessages = data => dispatch =>  {
     })
     .then((response) => response.data)
     .then((data) => {
-        console.log(data)
         dispatch ({ type: FETCH_CONVERSATION, payload: { active_conversation: data } })
     }).catch((err) => {
         console.log(err)
@@ -85,6 +84,7 @@ export const setActiveChat = data => dispatch => {
 }
 
 export const addNewMessage = data => dispatch => {
+    console.log(data)
     dispatch ({
         type: ADD_NEW_MESSAGE,
         payload: data

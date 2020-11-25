@@ -37,6 +37,7 @@ class WebSocketService {
     };
 
     this.socketRef.onmessage = e => {
+      console.log('RECIEVED MESSAGE')
         const data = JSON.parse(e.data)
         let currentUser = store.getState().auth.user
         const activeConvPartner = store.getState().chat.active_conv_partner
@@ -83,6 +84,7 @@ class WebSocketService {
 
   send(data) {
     let inst = this.socketRef
+    console.log('SENDING MESSAGE')
     this.waitForConnection(function () {
       try {
           inst.send(JSON.stringify({ ...data }));
