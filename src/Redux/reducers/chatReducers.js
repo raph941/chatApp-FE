@@ -55,7 +55,6 @@ export default function (state = initialState, action) {
             // primary key and the incoming message's primary key
             if (state.active_conversation.length > 0){
                 if (action.payload[0]['id'] === state.active_conversation[state.active_conversation.length -1]['id']){
-                    console.log('THIS IS A DUPLICATE')
                     return { ...state }
                 }
             }
